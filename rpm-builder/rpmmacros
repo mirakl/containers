@@ -1,0 +1,16 @@
+%_topdir /tmp/build
+%_sourcedir /source
+%_specdir %{_sourcedir}
+
+%_rpmdir %{_topdir}/rpm
+%_buildrootdir %{_topdir}/rpmbuild
+%buildroot %{_buildrootdir}/%{name}-%{version}-%{release}
+
+#binary packages path
+%_bindir /usr/local/bin
+
+#binary paths that will be the installation path for the file.
+%_bin %{buildroot}%{_bindir}
+
+#install file
+%add_bin() (mkdir -p %{_bin}; cp %{_sourcedir}/%1 %{_bin})
